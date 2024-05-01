@@ -14,7 +14,9 @@ const Menubar = () => {
         </div>
         <div className="  pl-10 ">
           <ul className="flex gap-6 ml-6 mt-6 font-semibold">
-            <li className=" font-bold">Home</li>
+            <li className=" font-bold">
+              <Link to="/">Home</Link>
+            </li>
             <li>
               <Link to="/products">Products</Link>
             </li>

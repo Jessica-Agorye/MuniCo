@@ -5,7 +5,7 @@ const cartSlice = createSlice({
   initialState: {
     cart: [],
     total: 0,
-    itemCount: 0,
+    count: 1,
     isLoading: true,
   },
   reducers: {
@@ -14,11 +14,15 @@ const cartSlice = createSlice({
     },
 
     removeFromCart: (state, action) => {
-      state.cart = state.cart.filter((x) => x.id !== action.payload.id);
+      state.cart = state.cart.filter((item) => item.id !== action.payload.id);
     },
 
-    incrementCartItemQuantity: (state, action) => {
-      state.cart.itemCount += 1;
+    setCount: (state, action) => {
+      state.count = action.payload;
+    },
+
+    incrementCartItemQuantity: (state) => {
+      state.count += 1;
     },
   },
 });
