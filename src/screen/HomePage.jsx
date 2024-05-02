@@ -3,12 +3,8 @@ import { Menubar, Hero, AboutPage } from "../components";
 const HomePage = () => {
   return (
     <>
-      <div className="  bg-slate-100">
-        <Menubar />
-
-        <Hero />
-      </div>
-
+      <Menubar />
+      <Hero />
       <AboutPage />
     </>
   );

@@ -1,31 +1,44 @@
 import IMAGES from "../../images/Images";
 
+import { useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowDown, faTags } from "@fortawesome/free-solid-svg-icons";
+
+import Aos from "aos";
+import "aos/dist/aos.css";
+
 const AboutPage = () => {
+  useEffect(() => {
+    Aos.init();
+  }, []);
   return (
-    <div className="  mt-60 mb-8 ">
-      <div className="grid grid-cols-2  gap-12 w-[70%] h-[700px] bg-slate-100 mx-auto">
-        <div className=" font-semibold text-2xl mt-10 ml-8 text-black leading-10">
-          <p className="mt-8">High-Fashion - Luxury is a LifeStyle.</p>
-          <p>Get access to the latest trends.</p>
-          <p className=" text-lg mt-8">
-            Subscribe to get instant updates when <br></br> new pieces arrive.{" "}
-          </p>
-
-          <form
-            action=""
-            className="  text-base   border border-none mt-10 rounded-md"
-          >
-            <input type="text" className="  h-8" />
-            <button className="  h-8  w-28 bg-black text-white">
-              Subscribe
-            </button>
-          </form>
+    <div className="mt-12">
+      <div data-aos="fade-down">
+        <p className=" text-4xl text-center">SHOP</p>
+        <div className="flex justify-center text-3xl mt-4">
+          <FontAwesomeIcon icon={faArrowDown}></FontAwesomeIcon>
         </div>
+      </div>
 
-        <div className="  mt-20 mb-10">
-          <img src={IMAGES.heroImg3} alt="" className="w-[50%] pb-2" />
-          <img src={IMAGES.heroImg3} alt="" className="w-[50%] ml-32 pb-2" />
-          <img src={IMAGES.heroImg3} alt="" className="w-[50%]" />
+      <div className=" text-center mt-10  mb-10">
+        <p className=" text-2xl  leading-10">
+          Shop Fashionable Items - Elevate Your Shopping Experience at Our
+          <br></br> Sophisticated Boutique.
+        </p>
+
+        <p className="mt-6 text-xl  text-slate-400">
+          20% off your first purchase.
+        </p>
+      </div>
+
+      <div className=" relative">
+        <div className="absolute right-[345px]  top-0 text-6xl mt-4  ">
+          <FontAwesomeIcon icon={faTags}> </FontAwesomeIcon>
+        </div>
+        <div className="grid grid-cols-3  gap-4 mx-auto  w-1/2">
+          <img src={IMAGES.blacKbag} alt="" className=" h-96 " />
+          <img src={IMAGES.perfume} alt="" className=" h-96 " />
+          <img src={IMAGES.shoe} alt="" className=" h-96 " />
         </div>
       </div>
     </div>

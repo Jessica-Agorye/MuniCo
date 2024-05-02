@@ -10,9 +10,9 @@ const Menubar = () => {
     <div className="">
       <div className="grid grid-cols-3  ">
         <div className=" text-3xl mt-4">
-          <p className="ml-6 font-semibold">Muni-Co</p>
+          <p className="pl-20 font-semibold">Muni-Co</p>
         </div>
-        <div className="  pl-10 ">
+        <div className=" flex justify-center  pl-10 ">
           <ul className="flex gap-6 ml-6 mt-6 font-semibold">
             <li className=" font-bold">
               <Link to="/">Home</Link>
