@@ -34,10 +34,14 @@ const Products = () => {
           {products.map((product) => (
             <div
               key={product.id}
-              className="p-4 border border-gray-300 rounded-md mx-10"
+              className="p-4 border shadow-2xl border-gray-200 rounded-lg  mx-10 text-center"
             >
               <Link to={`/product/${product.id}`} state={{ product }}>
-                <img src={product.image} alt="" className="w-56  h-64" />
+                <img
+                  src={product.image}
+                  alt=""
+                  className="w-56  h-64 mx-auto"
+                />
               </Link>
               <h2 className="mt-4">Product: {product.title}</h2>
             </div>
