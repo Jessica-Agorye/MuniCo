@@ -17,16 +17,16 @@ const cartSlice = createSlice({
       state.cart = state.cart.filter((item) => item.id !== action.payload.id);
     },
 
-    setCount: (state, action) => {
-      state.count = action.payload;
-    },
+    incrementCartItemQuantity: (state, action) => {
+      const { id } = action.payload;
+      const item = state.cart.find((item) => item.id === id);
 
-    incrementCartItemQuantity: (state) => {
-      state.count += 1;
+      if (item) {
+        item.count = (item.count || 1) + 1;
+      }
     },
   },
 });
-
 export default cartSlice.reducer;
 export const { addToCart, removeFromCart, incrementCartItemQuantity } =
   cartSlice.actions;

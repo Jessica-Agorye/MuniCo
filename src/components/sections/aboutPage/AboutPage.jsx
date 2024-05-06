@@ -12,7 +12,7 @@ const AboutPage = () => {
     Aos.init();
   }, []);
   return (
-    <div className="mt-12">
+    <div className="mt-12 mb-12">
       <div data-aos="fade-down">
         <p className=" text-4xl text-center">SHOP</p>
         <div className="flex justify-center text-3xl mt-4">

@@ -2,34 +2,25 @@ import { useSelector } from "react-redux";
 
 const CartSummary = () => {
   const cartItems = useSelector((state) => state.cart.cart);
-  let total = useSelector((state) => state.cart.total);
-  let count = useSelector((state) => state.cart.count);
-  console.log(count);
 
   const calculateTotal = () => {
-    if (count === 1) {
-      cartItems.forEach((item) => {
-        total += item.price;
-      });
+    let totalPrice = 0;
 
-      return total;
-    }
+    // Calculate total price by summing the price of each item in the cart
+    cartItems.forEach((item) => {
+      totalPrice += item.price * (item.count || 1); // Multiply item price by its quantity
+    });
 
-    if (count > 1) {
-      cartItems.forEach((item) => {
-        count;
-        total = item.price * count;
-      });
-
-      return total;
-    }
+    return totalPrice;
   };
 
   return (
-    <div>
-      <p>Cart Summary</p>
+    <div className=" space-y-6">
+      <p className=" font-semibold text-2xl">CART SUMMARY</p>
       <p>Total: ${calculateTotal().toFixed(2)} </p>
-      <button>Checkout: ${total.toFixed(2)}</button>
+      <button className=" bg-blue-700 px-2 py-2">
+        Checkout: ${calculateTotal().toFixed(2)}
+      </button>
     </div>
   );
 };
