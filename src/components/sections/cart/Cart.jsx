@@ -49,6 +49,8 @@ const Cart = () => {
                     <button>-</button>
                   </div>
 
+                  <p>Quantity: {item.count > 1 ? item.count : 1} </p>
+
                   <button
                     onClick={() => dispatch(removeFromCart({ id: item.id }))}
                     className="bg-blue-500 text-white px-4 py-2 mt-4"

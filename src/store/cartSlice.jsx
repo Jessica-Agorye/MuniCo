@@ -6,6 +6,7 @@ const cartSlice = createSlice({
     cart: [],
     total: 0,
     count: 1,
+
     isLoading: true,
   },
   reducers: {

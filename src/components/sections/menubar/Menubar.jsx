@@ -24,9 +24,11 @@ const Menubar = () => {
           </ul>
         </div>
         <div className=" flex pl-60 gap-6 mt-4">
-          <button className="bg-black text-white  font-bold px-6  py-1 text-center">
-            Login
-          </button>
+          <Link to="/login">
+            <button className="bg-black text-white  font-bold px-6  py-1 text-center">
+              Login
+            </button>
+          </Link>
           <Link to="/cart">
             {" "}
             <p className="mt-2 text-2xl">
