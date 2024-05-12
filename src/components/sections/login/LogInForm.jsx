@@ -1,97 +1,100 @@
-// import { useRef, useState, useEffect, useContext } from "react";
-// import AuthContext from "../../../context/AuthProvider";
-// import axios from "../../../api/axios";
+import IMAGES from "../../images/Images";
+import { useForm } from "react-hook-form";
 
-// const LOGIN_URL
+const LogInForm = () => {
+  //   const [formData, setFormData] = useState({
+  //     userName: "",
+  //     password: "",
+  //   });
 
-// const LogInForm = () => {
-//   const { setAuth } = useContext(AuthContext);
-//   const userRef = useRef();
-//   const errRef = useRef();
+  //   const [errors, setErrors] =
+  //     useState <
+  //     {
+  //       email: string,
+  //       password: string,
+  //     } >
+  //     {
+  //       email: "",
+  //       password: "",
+  //     };
 
-//   // add three pieces of state user, password and error
+  //   function handleChange(e: React.FormEvent) {
+  //     e.preventDefault();
 
-//   const [user, setUser] = useState("");
-//   const [pwd, setPwd] = useState("");
-//   const [errMsg, setErrMsg] = useState("");
-//   const [success, setSucces] = useState(false);
+  //     setErrors({ email: "", password: "" });
 
-//   useEffect(() => {
-//     userRef.current.focus();
-//   }, []);
+  // // manual validation
 
-//   useRef(() => {
-//     setErrMsg("");
-//   }, [user, pwd]);
+  //   if (!email.includes("@")) {
+  //     setErrors({ ...errors, email: "Email must include @" });
+  //     return;
 
-//   const handleSubmit = async (e) => {
-//     e.preventDefault(); // prevents the default behavior of the form which reloads the page.
+  //   }
 
-//     setUser("");
-//     setPwd("");
-//     setSucces(true);
-//   };
+  //     if (password.length < 8) {
+  //       setErrors({ ...errors, password: "password must be atleast 8 chars" });
+  //       return;
+  //     }
 
-//   return (
-//     <>
-//       {success ? (
-//         <section>
-//           <h1> You are logged in</h1>
+  //     console.log("form submitted")
+  //   }
+  // }
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-//           <br />
+  function submitHandler(data) {
+    console.log(data);
+  }
 
-//           <p>
-//             <a href="#"> Go to Home</a>
-//           </p>
-//         </section>
-//       ) : (
-//         <section className=" ml-10">
-//           <p
-//             ref={errRef}
-//             className={errMsg ? "errmsg" : "offscreen"}
-//             aria-live="assertive"
-//           >
-//             {errMsg}{" "}
-//           </p>
-//           <h1 className="mt-10 text-2xl  font-semibold">Sign In</h1>
+  return (
+    <section className="absolute bg-neutral-400 ">
+      <div className=" register leading-10">
+        <div>
+          <h1 className=" text-4xl mt-10">Sign In</h1>
+          <form onSubmit={handleSubmit(submitHandler)} className="">
+            <label htmlFor="username"> Username: </label>
+            <input
+              {...register("username", {
+                required: true,
+              })}
+              type="text"
+              placeholder="Username"
+              id="username"
+              className="mb-8"
+            />
 
-//           <form onSubmit={handleSubmit} className="space-y-4">
-//             <label htmlFor="username">Username:</label>
-//             <input
-//               className="border border-gray-500"
-//               type="text"
-//               id="username" // must match htmlfor
-//               ref={userRef}
-//               onChange={(e) => setUser(e.target.value)}
-//               value={user}
-//               required
-//             />
+            {/* {errors.username && (
+              <div className=" font-normal text-neutral-900">
+                {errors.username}
+              </div>
+            )} */}
 
-//             <br />
-//             <label htmlFor="password">Password:</label>
-//             <input
-//               className="border border-gray-500"
-//               type="password"
-//               id="password" // must match htmlfor
-//               onChange={(e) => setPwd(e.target.value)}
-//               value={pwd}
-//               required
-//             />
+            <br></br>
 
-//             <br />
+            <label htmlFor="password"> Password: </label>
+            <input
+              {...register("password", {
+                required: true,
+                minLength: 8,
+              })}
+              type="password"
+              id="password"
+            />
 
-//             <button className=" px-4 py-2 bg-black text-white">Sign In</button>
-//           </form>
+            <br></br>
 
-//           <p className="mt-10">
-//             Need an Account? <br />
-//             <span className="line">
-//               <a href="#">Sign Up</a>
-//             </span>
-//           </p>
-//         </section>
-//       )}
-//     </>
-//   );
-// };
-// export default LogInForm;
+            <button className="px-6 py-2 mt-10 bg-blue-200">Log In</button>
+          </form>
+        </div>
+        <p>
+          forgot password? <a href="#">click here</a>
+        </p>
+      </div>
+    </section>
+  );
+};
+
+export default LogInForm;
