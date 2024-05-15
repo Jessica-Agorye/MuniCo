@@ -48,7 +48,9 @@ const Menubar = () => {
           </Link>
         </div>
       </div>
-      {loginClicked && <LoginForm />}
+      <div className="flex justify-end mr-10 mt-10 ">
+        {loginClicked && <LoginForm />}
+      </div>
     </div>
   );
 };
