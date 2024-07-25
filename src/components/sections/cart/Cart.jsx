@@ -6,6 +6,7 @@ import CartSummary from "../cartSummary/CartSummary";
 import {
   removeFromCart,
   incrementCartItemQuantity,
+  decrementCartItemQuantity,
 } from "../../../store/cartSlice";
 
 const Cart = () => {
@@ -46,7 +47,13 @@ const Cart = () => {
                       +
                     </button>
                     <p className=" text-sm mt-2">{item.count || 1}</p>
-                    <button>-</button>
+                    <button
+                      onClick={() =>
+                        dispatch(decrementCartItemQuantity({ id: item.id }))
+                      }
+                    >
+                      -
+                    </button>
                   </div>
 
                   <p>Quantity: {item.count > 1 ? item.count : 1} </p>
