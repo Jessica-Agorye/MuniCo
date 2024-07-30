@@ -3,13 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const LogInForm = () => {
+const RegistrationForm = () => {
   const [data, setData] = useState({
     username: "",
+    email: "",
     password: "",
   });
 
-  const navigate = useNavigate(); // Corrected the variable name
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     setData((prevData) => ({
@@ -18,53 +19,26 @@ const LogInForm = () => {
     }));
   };
 
-  const proceedLogin = (e) => {
+  const proceedRegistration = (e) => {
     e.preventDefault();
-    if (validate()) {
-      console.log("proceed");
-
-      // Adjusted URL to query users by username
-      fetch(`http://localhost:3000/users?username=${data.username}`)
-        .then((res) => {
-          if (!res.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return res.json();
-        })
-        .then((users) => {
-          // Assuming the response is an array of users
-          if (users.length === 0) {
-            toast.error("Invalid username");
-          } else {
-            const user = users[0];
-            if (user.password === data.password) {
-              toast.success("Login successful");
-              navigate("/"); // Fixed the navigation method
-            } else {
-              toast.error("Invalid password");
-            }
-          }
-        })
-        .catch((err) => {
-          toast.error("Login failed due to: " + err.message);
-        });
-    }
-  };
-
-  const validate = () => {
-    let result = true;
-
-    if (data.username === "") {
-      result = false;
-      toast.warning("Please enter username");
-    }
-
-    if (data.password === "") {
-      result = false;
-      toast.warning("Please enter password");
-    }
-
-    return result;
+    fetch("http://localhost:3000/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then(() => {
+        toast.success("Registered Successfully");
+        navigate("/login");
+      })
+      .catch((err) => {
+        toast.error("Failed: " + err.message);
+      });
   };
 
   return (
@@ -72,21 +46,34 @@ const LogInForm = () => {
       <div className="register leading-10">
         <div>
           <h1 className="text-4xl mt-6">Sign In</h1>
-          <form className="mt-6" onSubmit={proceedLogin}>
+          <form className="mt-6" onSubmit={proceedRegistration}>
             <label htmlFor="username">Username:</label>
             <input
               className="text-center mb-10"
               type="text"
+              id="username"
               name="username"
               placeholder="Enter Username"
               onChange={handleChange}
               value={data.username}
             />
             <br />
+            <label htmlFor="email">Email:</label>
+            <input
+              className="text-center"
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter Email"
+              onChange={handleChange}
+              value={data.email}
+            />
+            <br />
             <label htmlFor="password">Password:</label>
             <input
               className="text-center"
               type="password"
+              id="password"
               name="password"
               placeholder="Enter Password"
               onChange={handleChange}
@@ -98,15 +85,13 @@ const LogInForm = () => {
             </button>
           </form>
         </div>
-
         <p>
           Forgot password? <a href="#">Click here</a>
         </p>
       </div>
-
       <ToastContainer />
     </section>
   );
 };
 
-export default LogInForm;
+export default RegistrationForm;

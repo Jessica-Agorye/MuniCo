@@ -5,6 +5,8 @@ import Products from "./components/sections/products/Products";
 import ProductPage from "./components/sections/productDetails/ProductPage"; // Import ProductPage
 import Cart from "./components/sections/cart/Cart";
 import { CheckoutPage } from "./components";
+import RegistrationForm from "./components/sections/Registration/RegistrationForm";
+import LogInForm from "./components/sections/login/LogInForm";
 
 // Define the main component
 function App() {
@@ -12,6 +14,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/register" element={<RegistrationForm />} />
+        <Route path="/login" element={<LogInForm />} />
         <Route path="/products" element={<Products />} />
         <Route path="/product/:id" element={<ProductPage />} />{" "}
         {/* Pass ProductPage component to route */}

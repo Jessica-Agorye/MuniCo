@@ -1,18 +1,12 @@
-import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import LoginForm from "../login/LogInForm";
+// import LogInForm from "../login/LogInForm";
+// import RegistrationForm from "../Registration/RegistrationForm";
 
 const Menubar = () => {
   const cartItems = useSelector((state) => state.cart.cart);
-
-  const [loginClicked, setLogInClicked] = useState(false);
-
-  function handleLogInClick() {
-    setLogInClicked(true);
-  }
 
   return (
     <div className="menubar">
@@ -31,15 +25,19 @@ const Menubar = () => {
             <li>Blog</li>
           </ul>
         </div>
-        <div className="flex pl-60 gap-6 mt-4">
-          <Link to="/">
-            <button
-              className="bg-black text-white font-bold px-6 py-1 text-center"
-              onClick={handleLogInClick}
-            >
+        <div className="flex pl-60 gap-1 mt-4">
+          <Link to="/login">
+            <button className="bg-black text-white font-bold px-6 py-1 text-center">
               Login
             </button>
           </Link>
+
+          <Link to="/register">
+            <button className="bg-black text-white font-bold px-6 py-1 text-center">
+              Register
+            </button>
+          </Link>
+
           <Link to="/cart">
             <p className="mt-2 text-2xl">
               <FontAwesomeIcon icon={faCartShopping}></FontAwesomeIcon>{" "}
@@ -47,9 +45,6 @@ const Menubar = () => {
             </p>
           </Link>
         </div>
-      </div>
-      <div className="flex justify-end mr-10 mt-10 ">
-        {loginClicked && <LoginForm />}
       </div>
     </div>
   );
