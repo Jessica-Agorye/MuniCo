@@ -10,7 +10,7 @@ const Menubar = () => {
 
   return (
     <div className="menubar">
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-3 ">
         <div className="text-3xl mt-4">
           <p className="pl-20 font-semibold">Muni-Co</p>
         </div>
@@ -26,7 +26,7 @@ const Menubar = () => {
           </ul>
         </div>
         <div className="flex pl-60 gap-1 mt-4">
-          <Link to="/login">
+          {/* <Link to="/login">
             <button className="bg-black text-white font-bold px-6 py-1 text-center">
               Login
             </button>
@@ -36,12 +36,13 @@ const Menubar = () => {
             <button className="bg-black text-white font-bold px-6 py-1 text-center">
               Register
             </button>
-          </Link>
+          </Link> */}
 
           <Link to="/cart">
-            <p className="mt-2 text-2xl">
+            <p className="mt-2 text-2xl ml-14 flex ">
+            {cartItems.length}
               <FontAwesomeIcon icon={faCartShopping}></FontAwesomeIcon>{" "}
-              {cartItems.length}
+           
             </p>
           </Link>
         </div>
