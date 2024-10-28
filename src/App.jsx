@@ -1,11 +1,11 @@
-// Import necessary components
+
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./screen/HomePage";
 import Products from "./components/sections/products/Products";
-import ProductPage from "./components/sections/productDetails/ProductPage"; // Import ProductPage
+import ProductPage from "./components/sections/productDetails/ProductPage"; // 
 import Cart from "./components/sections/cart/Cart";
 import { CheckoutPage } from "./components";
-// import RegistrationForm from "./components/sections/Registration/RegistrationForm";
+
 import LogInForm from "./components/sections/login/LogInForm";
 
 // Define the main component
@@ -28,3 +28,4 @@ function App() {
 
 // Export the main component
 export default App;
+
